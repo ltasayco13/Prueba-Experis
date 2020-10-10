@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+    reverseproxy:
+        image: reverseproxy
+        ports:
+            - 8080:8080
+            - 8081:8081
+        restart: always
+
+    nginx:
+        depends_on:
+            - reverseproxy
+        image: nginx:alpine
+        restart: always
+
+    nginx1:
+        depends_on:
+            - reverseproxy
+        image: nginx1:alpine
+        restart: always
